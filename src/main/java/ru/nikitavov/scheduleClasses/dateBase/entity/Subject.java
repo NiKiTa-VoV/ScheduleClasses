@@ -1,13 +1,9 @@
 package ru.nikitavov.scheduleClasses.dateBase.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import org.hibernate.annotations.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(appliesTo = "Subject")
+@Table
 public class Subject {
     @Id
     @GeneratedValue

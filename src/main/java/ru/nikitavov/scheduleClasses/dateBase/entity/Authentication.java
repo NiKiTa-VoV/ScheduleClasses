@@ -1,21 +1,18 @@
 package ru.nikitavov.scheduleClasses.dateBase.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import org.hibernate.annotations.Table;
+import jakarta.persistence.*;
+
 
 @Entity
-@Table(appliesTo = "Authorization")
+@Table
+@IdClass(AuthenticationId.class)
 public class Authentication {
     @ManyToOne
     @Id
-    @Column
     private User user;
 
-    @Id
     @Column
+    @Id
     private AuthenticationType type;
 
     @Column

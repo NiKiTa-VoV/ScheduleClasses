@@ -1,17 +1,15 @@
 package ru.nikitavov.scheduleClasses.dateBase.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Table;
-
 import java.util.List;
 
 @Entity
-@Table(appliesTo = "Department")
+@Table
 public class Department {
     @Id
     @GeneratedValue
     @Column
-    private Long id;
+    private long id;
 
     @Column
     private String name;

@@ -1,24 +1,22 @@
 package ru.nikitavov.scheduleClasses.dateBase.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Table;
+
 
 import java.util.List;
 
 @Entity
-@Table(appliesTo = "Group")
+@Table(name = "'Group'")
 public class Group {
     @Id
     @GeneratedValue
     @Column
-    private Long id;
+    private long id;
 
     @ManyToOne
-    @Column
     private Department department;
 
     @ManyToOne
-    @Column
     private Specialization specialization;
 
     @Column
@@ -28,14 +26,11 @@ public class Group {
     private int number;
 
     @OneToMany
-    @Column
     List<Student> students;
 
-    @Column
     @OneToMany
     private List<Curriculum> curricula;
 
-    @Column
     @OneToMany
     private List<Lesson> lesson;
 }

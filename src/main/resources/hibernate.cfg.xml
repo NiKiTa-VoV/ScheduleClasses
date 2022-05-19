@@ -35,7 +35,19 @@
         <property name="hbm2ddl.auto">create</property>
 
         <!-- Names the annotated entity class -->
-        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.User"/>
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Authentication" />
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Curriculum" />
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Department" />
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Group" />
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Lesson" />
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.LoginHistory" />
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Role" />
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Schedule" />
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Specialization" />
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Student" />
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Subject" />
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Teacher" />
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.User" />
 
     </session-factory>
 

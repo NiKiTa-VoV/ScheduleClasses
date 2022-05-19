@@ -1,12 +1,11 @@
 package ru.nikitavov.scheduleClasses.dateBase.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Table;
 
 import java.util.Date;
 
 @Entity
-@Table(appliesTo = "User")
+@Table(name = "'User'")
 public class User {
     @Id
     @GeneratedValue
@@ -14,7 +13,6 @@ public class User {
     private long id;
 
     @ManyToOne
-    @Column
     private Role role;
 
     @Column
@@ -28,4 +26,26 @@ public class User {
 
     @Column
     private Date registryDate;
+
+    protected User() {}
+
+    public User(Role role, String name, String login, String mail, Date registryDate) {
+        this.role = role;
+        this.name = name;
+        this.login = login;
+        this.mail = mail;
+        this.registryDate = registryDate;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+            "id=" + id +
+            ", role=" + role +
+            ", name='" + name + '\'' +
+            ", login='" + login + '\'' +
+            ", mail='" + mail + '\'' +
+            ", registryDate=" + registryDate +
+            '}';
+    }
 }
