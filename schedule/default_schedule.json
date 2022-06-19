@@ -1,0 +1,108 @@
+{
+  "1": [
+    {
+      "teacherId": 1,
+      "week": 0,
+      "dayWeek": 1,
+      "lessons": [
+        {
+          "number": 1,
+          "idGroup": 2,
+          "idSubject": 1,
+          "idRoom": 2
+        },
+        {
+          "number": 2,
+          "idGroup": 3,
+          "idSubject": 2,
+          "idRoom": 3
+        },
+        {
+          "number": 3,
+          "idGroup": 4,
+          "idSubject": 3,
+          "idRoom": 2
+        }
+      ]
+    },
+    {
+      "teacherId": 1,
+      "week": 0,
+      "dayWeek": 2,
+      "lessons": [
+        {
+          "number": 2,
+          "idGroup": 2,
+          "idSubject": 1,
+          "idRoom": 2
+        },
+        {
+          "number": 3,
+          "idGroup": 3,
+          "idSubject": 2,
+          "idRoom": 3
+        },
+        {
+          "number": 4,
+          "idGroup": 4,
+          "idSubject": 3,
+          "idRoom": 2
+        }
+      ]
+    }
+  ],
+  "3": [
+    {
+      "teacherId": 3,
+      "week": 0,
+      "dayWeek": 1,
+      "lessons": [
+        {
+          "number": 1,
+          "idGroup": 2,
+          "idSubject": 1,
+          "idRoom": 2
+        },
+        {
+          "number": 2,
+          "idGroup": 2,
+          "idSubject": 4,
+          "idRoom": 2
+        },
+        {
+          "number": 3,
+          "idGroup": 5,
+          "idSubject": 1,
+          "idRoom": 2
+        }
+      ]
+    }
+  ],
+  "52": [
+    {
+      "teacherId": 52,
+      "week": 0,
+      "dayWeek": 1,
+      "lessons": [
+        {
+          "number": 1,
+          "idGroup": 2,
+          "idSubject": 4,
+          "idRoom": 2
+        },
+        {
+          "number": 2,
+          "idGroup": 5,
+          "idSubject": 1,
+          "idRoom": 2
+        },
+        {
+          "number": 3,
+          "idGroup": 6,
+          "idSubject": 5,
+          "idRoom": 3
+        }
+      ]
+    }
+  ]
+}

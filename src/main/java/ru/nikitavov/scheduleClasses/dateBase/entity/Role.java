@@ -2,12 +2,18 @@ package ru.nikitavov.scheduleClasses.dateBase.entity;
 
 import jakarta.persistence.*;
 
-
 import java.util.List;
 
 @Entity
 @Table
 public class Role {
+    @OneToMany
+    @JoinColumn(name = "role_id")
+    private List<User> users;
+
+    public Role() {
+    }
+
     @Id
     @GeneratedValue
     @Column
@@ -16,6 +22,31 @@ public class Role {
     @Column
     private String name;
 
-    @OneToMany
-    private List<User> users;
+    public Role(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
 }

@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+import "messageCode.proto";
+
+package classRoom;
+
+option java_multiple_files = true;
+option java_package = "ru.nikitavov.scheduleClasses.grpc";
+option java_outer_classname = "ClassRoomProto";
+
+service ClassRoom {
+  rpc Create (CreateClassRoomRequest) returns (CreateClassRoomResponse) {}
+  rpc Read (ReadClassRoomRequest) returns (ReadClassRoomResponse) {}
+  rpc Edit (EditClassRoomRequest) returns (EditClassRoomResponse) {}
+  rpc Delete (DeleteClassRoomRequest) returns (DeleteClassRoomResponse) {}
+
+  rpc ReadAll (ReadAllClassRoomRequest) returns (ReadAllClassRoomResponse) {}
+}
+
+message CreateClassRoomRequest {
+  string number = 1;
+}
+
+message CreateClassRoomResponse {
+  MessageCode code = 1;
+  int64 id = 2;
+}
+
+message ReadClassRoomRequest {
+  int64 id = 1;
+}
+
+message ReadClassRoomResponse {
+  MessageCode code = 1;
+  int64 id = 2;
+  string number = 3;
+}
+
+message EditClassRoomRequest {
+  int64 id = 1;
+  string number = 2;
+}
+
+message EditClassRoomResponse {
+  MessageCode code = 1;
+  string field = 2;
+}
+
+message DeleteClassRoomRequest {
+  int64 id = 1;
+}
+
+message DeleteClassRoomResponse {
+  MessageCode code = 1;
+}
+
+message ReadAllClassRoomRequest {
+
+}
+
+message ReadAllClassRoomResponse {
+  repeated ReadClassRoomResponse responses = 1;
+}
+

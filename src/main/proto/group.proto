@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+import "messageCode.proto";
+
+package group;
+
+option java_multiple_files = true;
+option java_package = "ru.nikitavov.scheduleClasses.grpc";
+option java_outer_classname = "GroupProto";
+
+service Group {
+  rpc Create (CreateGroupRequest) returns (CreateGroupResponse) {}
+  rpc Read (ReadGroupRequest) returns (ReadGroupResponse) {}
+  rpc Edit (EditGroupRequest) returns (EditGroupResponse) {}
+  rpc Delete (DeleteGroupRequest) returns (DeleteGroupResponse) {}
+
+  rpc ReadAll (ReadAllGroupRequest) returns (ReadAllGroupResponse) {}
+}
+
+message CreateGroupRequest {
+  int64 specializationId = 1;
+  int64 departmentId = 2;
+  int32 numberCourse = 3;
+  int32 numberGroup = 4;
+}
+
+message CreateGroupResponse {
+  MessageCode code = 1;
+  string field = 2;
+  int64 id = 3;
+}
+
+message ReadGroupRequest {
+  int64 id = 1;
+}
+
+message ReadGroupResponse {
+  MessageCode code = 1;
+  int64 id = 2;
+  int64 specializationId = 3;
+  int64 departmentId = 4;
+  int32 numberCourse = 5;
+  int32 numberGroup = 6;
+}
+
+message EditGroupRequest {
+  int64 id = 1;
+  int64 specializationId = 2;
+  int64 departmentId = 3;
+  int32 numberCourse = 4;
+  int32 numberGroup = 5;
+}
+
+message EditGroupResponse {
+  MessageCode code = 1;
+  string field = 2;
+}
+
+message DeleteGroupRequest {
+  int64 id = 1;
+}
+
+message DeleteGroupResponse {
+  MessageCode code = 1;
+}
+
+message ReadAllGroupRequest {
+
+}
+
+message ReadAllGroupResponse {
+  repeated ReadGroupResponse responses = 1;
+}

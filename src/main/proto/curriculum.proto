@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+import "messageCode.proto";
+
+package curriculum;
+
+option java_multiple_files = true;
+option java_package = "ru.nikitavov.scheduleClasses.grpc";
+option java_outer_classname = "CurriculumProto";
+
+service Curriculum {
+  rpc Create (CreateCurriculumRequest) returns (CreateCurriculumResponse) {}
+  rpc Read (ReadCurriculumRequest) returns (ReadCurriculumResponse) {}
+  rpc Edit (EditCurriculumRequest) returns (EditCurriculumResponse) {}
+  rpc Delete (DeleteCurriculumRequest) returns (DeleteCurriculumResponse) {}
+
+  rpc ReadAll (ReadAllCurriculumRequest) returns (ReadAllCurriculumResponse) {}
+}
+
+message CreateCurriculumRequest {
+  int64 teacherId = 1;
+  int64 groupId = 2;
+  int64 subjectId = 3;
+  int32 numberStudyHours = 4;
+}
+
+message CreateCurriculumResponse {
+  MessageCode code = 1;
+  string field = 2;
+  int64 id = 3;
+}
+
+message ReadCurriculumRequest {
+  int64 id = 1;
+}
+
+message ReadCurriculumResponse {
+  MessageCode code = 1;
+  int64 id = 2;
+  int64 teacherId = 3;
+  int64 groupId = 4;
+  int64 subjectId = 5;
+  int32 numberStudyHours = 6;
+}
+
+message EditCurriculumRequest {
+  int64 id = 1;
+  int64 teacherId = 2;
+  int64 groupId = 3;
+  int64 subjectId = 4;
+  int32 numberStudyHours = 5;
+}
+
+message EditCurriculumResponse {
+  MessageCode code = 1;
+  string field = 2;
+}
+
+message DeleteCurriculumRequest {
+  int64 id = 1;
+}
+
+message DeleteCurriculumResponse {
+  MessageCode code = 1;
+}
+
+message ReadAllCurriculumRequest {
+
+}
+
+message ReadAllCurriculumResponse {
+  repeated ReadCurriculumResponse responses = 1;
+}
+

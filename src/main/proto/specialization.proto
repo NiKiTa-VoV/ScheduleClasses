@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+import "messageCode.proto";
+
+package specialization;
+
+option java_multiple_files = true;
+option java_package = "ru.nikitavov.scheduleClasses.grpc";
+option java_outer_classname = "SpecializationProto";
+
+service Specialization {
+  rpc Create (CreateSpecializationRequest) returns (CreateSpecializationResponse) {}
+  rpc Read (ReadSpecializationRequest) returns (ReadSpecializationResponse) {}
+  rpc Edit (EditSpecializationRequest) returns (EditSpecializationResponse) {}
+  rpc Delete (DeleteSpecializationRequest) returns (DeleteSpecializationResponse) {}
+
+  rpc ReadAll (ReadAllSpecializationRequest) returns (ReadAllSpecializationResponse) {}
+}
+
+message CreateSpecializationRequest {
+  string name = 1;
+}
+
+message CreateSpecializationResponse {
+  MessageCode code = 1;
+  int64 id = 2;
+}
+
+message ReadSpecializationRequest {
+  int64 id = 1;
+}
+
+message ReadSpecializationResponse {
+  MessageCode code = 1;
+  int64 id = 2;
+  string name = 3;
+}
+
+message EditSpecializationRequest {
+  int64 id = 1;
+  string name = 2;
+}
+
+message EditSpecializationResponse {
+  MessageCode code = 1;
+  string field = 2;
+}
+
+message DeleteSpecializationRequest {
+  int64 id = 1;
+}
+
+message DeleteSpecializationResponse {
+  MessageCode code = 1;
+}
+
+message ReadAllSpecializationRequest {
+
+}
+
+message ReadAllSpecializationResponse {
+  repeated ReadSpecializationResponse responses = 1;
+}
+

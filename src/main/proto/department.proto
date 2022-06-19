@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+import "messageCode.proto";
+
+package department;
+
+option java_multiple_files = true;
+option java_package = "ru.nikitavov.scheduleClasses.grpc";
+option java_outer_classname = "DepartmentProto";
+
+service Department {
+  rpc Create (CreateDepartmentRequest) returns (CreateDepartmentResponse) {}
+  rpc Read (ReadDepartmentRequest) returns (ReadDepartmentResponse) {}
+  rpc Edit (EditDepartmentRequest) returns (EditDepartmentResponse) {}
+  rpc Delete (DeleteDepartmentRequest) returns (DeleteDepartmentResponse) {}
+
+  rpc ReadAll (ReadAllDepartmentRequest) returns (ReadAllDepartmentResponse) {}
+}
+
+message CreateDepartmentRequest {
+  string name = 1;
+}
+
+message CreateDepartmentResponse {
+  MessageCode code = 1;
+  int64 id = 2;
+}
+
+message ReadDepartmentRequest {
+  int64 id = 1;
+}
+
+message ReadDepartmentResponse {
+  MessageCode code = 1;
+  int64 id = 2;
+  string name = 3;
+}
+
+message EditDepartmentRequest {
+  int64 id = 1;
+  string name = 2;
+}
+
+message EditDepartmentResponse {
+  MessageCode code = 1;
+  string field = 2;
+}
+
+message DeleteDepartmentRequest {
+  int64 id = 1;
+}
+
+message DeleteDepartmentResponse {
+  MessageCode code = 1;
+}
+
+message ReadAllDepartmentRequest {
+
+}
+
+message ReadAllDepartmentResponse {
+  repeated ReadDepartmentResponse responses = 1;
+}
+

@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+import "messageCode.proto";
+
+package subject;
+
+option java_multiple_files = true;
+option java_package = "ru.nikitavov.scheduleClasses.grpc";
+option java_outer_classname = "SubjectProto";
+
+service Subject {
+  rpc Create (CreateSubjectRequest) returns (CreateSubjectResponse) {}
+  rpc Read (ReadSubjectRequest) returns (ReadSubjectResponse) {}
+  rpc Edit (EditSubjectRequest) returns (EditSubjectResponse) {}
+  rpc Delete (DeleteSubjectRequest) returns (DeleteSubjectResponse) {}
+
+  rpc ReadAll (ReadAllSubjectRequest) returns (ReadAllSubjectResponse) {}
+}
+
+message CreateSubjectRequest {
+  string name = 1;
+}
+
+message CreateSubjectResponse {
+  MessageCode code = 1;
+  int64 id = 2;
+}
+
+message ReadSubjectRequest {
+  int64 id = 1;
+}
+
+message ReadSubjectResponse {
+  MessageCode code = 1;
+  int64 id = 2;
+  string name = 3;
+}
+
+message EditSubjectRequest {
+  int64 id = 1;
+  string name = 2;
+}
+
+message EditSubjectResponse {
+  MessageCode code = 1;
+  string field = 2;
+}
+
+message DeleteSubjectRequest {
+  int64 id = 1;
+}
+
+message DeleteSubjectResponse {
+  MessageCode code = 1;
+}
+
+message ReadAllSubjectRequest {
+
+}
+
+message ReadAllSubjectResponse {
+  repeated ReadSubjectResponse responses = 1;
+}
+

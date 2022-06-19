@@ -13,41 +13,31 @@
 
     <session-factory>
 
-        <!-- Database connection settings -->
-        <property name="connection.driver_class">org.h2.Driver</property>
-        <property name="connection.url">jdbc:h2:mem:db1</property>
-        <property name="connection.username">sa</property>
-        <property name="connection.password"></property>
-
-        <!-- JDBC connection pool (use the built-in) -->
-        <property name="connection.pool_size">1</property>
-
-        <!-- SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.H2Dialect</property>
-
-        <!-- Disable the second-level cache  -->
+        <!--        <property name="connection.url">jdbc:h2:mem:db1</property>-->
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/schedule_classes</property>
+        <property name="connection.username">postgres</property>
+        <property name="connection.password">front2007</property>
+        <property name="connection.pool_size">20</property>
+        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
-
-        <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
+        <!--        <property name="hbm2ddl.auto">validate</property>-->
 
-        <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">create</property>
-
-        <!-- Names the annotated entity class -->
-        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Authentication" />
-        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Curriculum" />
-        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Department" />
-        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Group" />
-        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Lesson" />
-        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.LoginHistory" />
-        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Role" />
-        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Schedule" />
-        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Specialization" />
-        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Student" />
-        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Subject" />
-        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Teacher" />
-        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.User" />
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Authentication"/>
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Curriculum"/>
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Department"/>
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Group"/>
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Lesson"/>
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.LoginHistory"/>
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Role"/>
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Schedule"/>
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Specialization"/>
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Student"/>
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Subject"/>
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.Teacher"/>
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.User"/>
+        <mapping class="ru.nikitavov.scheduleClasses.dateBase.entity.ClassRoom"/>
 
     </session-factory>
 

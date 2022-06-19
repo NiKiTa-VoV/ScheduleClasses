@@ -1,0 +1,95 @@
+syntax = "proto3";
+
+import "messageCode.proto";
+import "lesson.proto";
+
+package schedule;
+
+option java_multiple_files = true;
+option java_package = "ru.nikitavov.scheduleClasses.grpc";
+option java_outer_classname = "ScheduleProto";
+
+service Schedule {
+  rpc Create (CreateScheduleRequest) returns (CreateScheduleResponse) {}
+  rpc Read (ReadScheduleRequest) returns (ReadScheduleResponse) {}
+  rpc Edit (EditScheduleRequest) returns (EditScheduleResponse) {}
+  rpc Delete (DeleteScheduleRequest) returns (DeleteScheduleResponse) {}
+
+  rpc ReadAll (ReadAllScheduleRequest) returns (ReadAllScheduleResponse) {}
+
+  rpc ReadDefault (ReadDefaultRequest) returns (ReadDefaultResponse) {}
+  rpc ReadDefaults (ReadDefaultsRequest) returns (ReadDefaultsResponse) {}
+}
+
+message CreateScheduleRequest {
+  int64 teacherId = 1;
+  string date = 2;
+  repeated lesson.CreateLessonRequest lessons = 3;
+}
+
+message CreateScheduleResponse {
+  MessageCode code = 1;
+  string field = 2;
+  int64 id = 3;
+}
+
+message ReadScheduleRequest {
+  int64 id = 1;
+}
+
+message ReadScheduleResponse {
+  MessageCode code = 1;
+  int64 id = 2;
+  int64 teacherId = 3;
+  string date = 4;
+  lesson.ReadAllLessonsResponse lessons = 5;
+
+}
+
+message EditScheduleRequest {
+  int64 id = 1;
+  int64 teacherId = 2;
+  string date = 3;
+}
+
+message EditScheduleResponse {
+  MessageCode code = 1;
+  string field = 2;
+}
+
+message DeleteScheduleRequest {
+  int64 id = 1;
+}
+
+message DeleteScheduleResponse {
+  MessageCode code = 1;
+}
+
+message ReadAllScheduleRequest {
+
+}
+
+message ReadAllScheduleResponse {
+  repeated ReadScheduleResponse responses = 1;
+}
+
+message ReadDefaultRequest {
+  int64 teacherId = 1;
+}
+
+message ReadDefaultResponse {
+  MessageCode code = 1;
+  int64 teacherId = 2;
+  lesson.ReadDefaultLessonsTeacherResponse lessons = 3;
+}
+
+message ReadDefaultsRequest {
+  string date = 1;
+}
+
+message ReadDefaultsResponse {
+  repeated ReadDefaultResponse schedules = 2;
+}
+
+
+

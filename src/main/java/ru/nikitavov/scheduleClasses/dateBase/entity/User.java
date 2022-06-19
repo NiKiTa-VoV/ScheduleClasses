@@ -2,11 +2,19 @@ package ru.nikitavov.scheduleClasses.dateBase.entity;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.Instant;
+import java.util.List;
 
 @Entity
-@Table(name = "'User'")
+@Table(name = "users")
 public class User {
+
+    @Column
+    private Instant registryDate;
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<Authentication> authentications;
+
     @Id
     @GeneratedValue
     @Column
@@ -24,12 +32,10 @@ public class User {
     @Column
     private String mail;
 
-    @Column
-    private Date registryDate;
+    protected User() {
+    }
 
-    protected User() {}
-
-    public User(Role role, String name, String login, String mail, Date registryDate) {
+    public User(Role role, String name, String login, String mail, Instant registryDate) {
         this.role = role;
         this.name = name;
         this.login = login;
@@ -40,12 +46,56 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-            "id=" + id +
-            ", role=" + role +
-            ", name='" + name + '\'' +
-            ", login='" + login + '\'' +
-            ", mail='" + mail + '\'' +
-            ", registryDate=" + registryDate +
-            '}';
+                "id=" + id +
+                ", role=" + role +
+                ", name='" + name + '\'' +
+                ", login='" + login + '\'' +
+                ", mail='" + mail + '\'' +
+                ", registryDate=" + registryDate +
+                '}';
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public Instant getRegistryDate() {
+        return registryDate;
+    }
+
+    public List<Authentication> getAuthentications() {
+        return authentications;
     }
 }

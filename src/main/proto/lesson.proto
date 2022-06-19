@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+import "messageCode.proto";
+
+package lesson;
+
+option java_multiple_files = true;
+option java_package = "ru.nikitavov.scheduleClasses.grpc";
+option java_outer_classname = "LessonProto";
+
+service Lesson {
+  rpc Read (ReadLessonRequest) returns (ReadLessonResponse) {}
+
+  rpc ReadAll (ReadAllLessonsRequest) returns (ReadAllLessonsResponse) {}
+  rpc ReadAvailableLessonsTeacher (ReadAvailableLessonsRequest) returns (ReadAvailableLessonsResponse) {}
+  rpc ReadDefaultLessonsTeacher (ReadDefaultLessonsTeacherRequest) returns (ReadDefaultLessonsTeacherResponse) {}
+}
+
+message CreateLessonRequest {
+  int64 subjectId = 1;
+  int64 groupId = 2;
+  int64 roomId = 4;
+  int32 lessonNumber = 5;
+  bool underRecord = 6;
+  bool empty = 7;
+}
+
+message CreateLessonResponse {
+  MessageCode code = 1;
+  string field = 2;
+  int64 id = 3;
+}
+
+message ReadLessonRequest {
+  int64 id = 1;
+}
+
+message ReadLessonResponse {
+  MessageCode code = 1;
+  int64 id = 2;
+  int64 scheduleId = 3;
+  int64 subjectId = 4;
+  int64 groupId = 5;
+  int64 teacherId = 6;
+  int64 roomId = 7;
+  int64 lessonNumber = 8;
+  string dateWorkingOut = 9;
+}
+
+message ReadAllLessonsRequest {
+  int64 scheduleId = 1;
+}
+
+message ReadAllLessonsResponse {
+  repeated ReadLessonResponse responses = 1;
+}
+
+message ReadAvailableLessonResponse {
+  int64 subjectId = 1;
+  int64 groupId = 2;
+  int64 teacherId = 3;
+  int64 roomId = 4;
+  int64 lessonNumber = 5;
+}
+
+message ReadAvailableLessonsRequest {
+  int64 teacherId = 1;
+}
+
+message ReadAvailableLessonsResponse {
+  MessageCode code = 1;
+  int64 teacherId = 2;
+  repeated ReadAvailableLessonResponse responses = 3;
+}
+
+message ReadDefaultLessonsTeacherRequest {
+  int64 teacherId = 1;
+}
+
+message ReadDefaultLessonsTeacherResponse {
+  int64 teacherId = 1;
+  repeated ReadAvailableLessonResponse responses = 2;
+}
+

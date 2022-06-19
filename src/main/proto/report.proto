@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+import "messageCode.proto";
+
+package report;
+
+option java_multiple_files = true;
+option java_package = "ru.nikitavov.scheduleClasses.grpc";
+option java_outer_classname = "ReportProto";
+
+service Report {
+  rpc TeacherWorkload (TeacherWorkloadRequest) returns (TeacherWorkloadResponse) {}
+}
+
+message TeacherWorkloadRequest {
+
+}
+
+message TeacherWorkloadResponse {
+  MessageCode code = 1;
+  repeated TeacherInfo teachers = 2;
+}
+
+message TeacherInfo {
+  string nameAbbreviation = 1;
+  int32 numberHours = 2;
+}
